@@ -1,13 +1,17 @@
+import jwt from "jsonwebtoken"
+
 function authMiddleware(req, res, next) {
     const publicPaths = ['/register', '/login'];
     if (publicPaths.includes(req.path)) {
         return next();
     }
 
-    const token = req.headers['authorization'];
+    const bearerToken = req.headers['authorization'];
+    const token = token.split(" ").pop()
 
-    if (token) {
+    if (bearerToken) {
         jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+            // console.log(user,err)
             if (err) {
                 return res.sendStatus(403);
             }
