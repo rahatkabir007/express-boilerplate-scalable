@@ -5,7 +5,8 @@ class AppController {
 
     registerRoutes(app) {
         app.get('/', (req, res) => {
-            this.appService.getHomePage(req, res);
+            res.json("Server Is Running")
+            // this.appService.getHomePage(req, res);
         });
     }
 }
