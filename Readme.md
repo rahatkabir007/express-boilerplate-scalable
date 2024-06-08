@@ -1,4 +1,6 @@
 express-structure
+├── public
+├       ├── images    
 ├── src
 │   ├── modules
 │   │   ├── app
@@ -17,6 +19,7 @@ express-structure
 │   │   └── database.js
 │   ├── main.js
 ├── .env
+├── .index.html
 ├── .env.example
 ├── .gitignore
 ├── package.json

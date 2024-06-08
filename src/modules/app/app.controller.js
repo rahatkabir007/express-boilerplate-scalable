@@ -5,7 +5,7 @@ class AppController {
 
     registerRoutes(app) {
         app.get('/', (req, res) => {
-            res.send(this.appService.getHello());
+            this.appService.getHomePage(req, res);
         });
     }
 }
