@@ -1,10 +1,15 @@
 function authMiddleware(req, res, next) {
-    // Placeholder for authentication logic
     const token = req.headers['authorization'];
-    console.log(token)
+
     if (token) {
-        // Validate token logic here
-        next();
+        jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+            if (err) {
+                return res.sendStatus(403);
+            }
+
+            req.user = user;
+            next();
+        });
     } else {
         res.status(401).send('Unauthorized');
     }
