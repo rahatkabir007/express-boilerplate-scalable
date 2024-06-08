@@ -1,20 +1,19 @@
-import { authMiddleware } from "../../middlewares/auth.middleware.js";
-
 class UsersController {
     constructor(usersService) {
         this.usersService = usersService;
     }
 
     registerRoutes(app) {
-        app.get('/users', authMiddleware, (req, res) => {
+        app.get('/users', (req, res) => {
             res.send(this.usersService.getUsers());
         });
 
-        app.get('/users/:id', authMiddleware, (req, res) => {
+        app.get('/users/:id', (req, res) => {
             res.send(this.usersService.getUserById(req.params.id));
         });
 
         app.post('/register', (req, res) => {
+            console.log(req.body)
             res.send(this.usersService.registerUser(req.body));
         });
 

@@ -1,6 +1,5 @@
 import { ObjectId } from "mongodb";
-import pkg from 'bcrypt';
-const { bcrypt } = pkg;
+import bcrypt from 'bcrypt';
 
 class UsersService {
     constructor(db) {
@@ -8,9 +7,10 @@ class UsersService {
     }
 
     async registerUser(userData) {
+        console.log(userData)
         const hashedPassword = await bcrypt.hash(userData.password, 10);
         const user = { ...userData, password: hashedPassword };
-        await this.collection.insertOne(user);
+        await this.collection.save(user);
         return user;
     }
 
