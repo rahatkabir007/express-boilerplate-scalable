@@ -4,7 +4,9 @@ This repository provides a boilerplate for building Express.js applications with
 📂 Project Structure
 Below is the detailed folder structure of the project:
 
+```plaintext
 express-structure
+
 ├── public
 │   ├── images                     # Static assets folder (e.g., images, stylesheets)
 │
